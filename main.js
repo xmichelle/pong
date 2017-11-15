@@ -1,5 +1,7 @@
 let canvas
 let canvasContext
+let ballX = 50
+let ballSpeedX = 5
 
 window.onload = function() {
   canvas = document.querySelector('#gameCanvas')
@@ -14,6 +16,9 @@ function canvasDrawings() {
   canvasContext.fillStyle = 'white'
   canvasContext.fillRect(0, 210, 10, 100)
 
+  // draws the ball
   canvasContext.fillStyle = 'white'
-  canvasContext.fillRect(100, 100, 10, 10)
+  canvasContext.beginPath()
+  canvasContext.arc(50, 100, 10, 0, Math.PI*2, true)
+  canvasContext.fill()
 }
