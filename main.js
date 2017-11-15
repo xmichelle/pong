@@ -15,7 +15,13 @@ window.onload = function() {
 }
 
 function moveBall() {
-  ballX += 5
+  ballX += ballSpeedX
+  if (ballX <= 0) {
+    ballSpeedX = -ballSpeedX
+  }
+  else if (ballX >= canvas.width) {
+    ballSpeedX = -ballSpeedX
+  }
 }
 
 function canvasDrawings() {
