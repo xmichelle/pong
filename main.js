@@ -13,4 +13,7 @@ function canvasDrawings() {
 
   canvasContext.fillStyle = 'white'
   canvasContext.fillRect(0, 210, 10, 100)
+
+  canvasContext.fillStyle = 'white'
+  canvasContext.fillRect(100, 100, 10, 10)
 }
