@@ -7,10 +7,11 @@ window.onload = function() {
   canvas = document.querySelector('#gameCanvas')
   canvasContext = canvas.getContext('2d')
 
+  const framesPerSecond = 30
   setInterval(() => {
     moveBall()
     canvasDrawings()
-  }, 1000)
+  }, 1000/framesPerSecond)
 }
 
 function moveBall() {
