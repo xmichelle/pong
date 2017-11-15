@@ -6,7 +6,15 @@ let ballSpeedX = 5
 window.onload = function() {
   canvas = document.querySelector('#gameCanvas')
   canvasContext = canvas.getContext('2d')
-  canvasDrawings()
+
+  setInterval(() => {
+    moveBall()
+    canvasDrawings()
+  }, 1000)
+}
+
+function moveBall() {
+  ballX += 5
 }
 
 function canvasDrawings() {
@@ -16,7 +24,7 @@ function canvasDrawings() {
   canvasContext.fillStyle = 'white'
   canvasContext.fillRect(0, 210, 10, 100)
 
-  drawCircle('white', 50, 100, 10)
+  drawCircle('white', ballX, 100, 10)
 }
 
 function drawCircle(color, circleX, circleY, radius) {
