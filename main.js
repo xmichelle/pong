@@ -16,9 +16,12 @@ function canvasDrawings() {
   canvasContext.fillStyle = 'white'
   canvasContext.fillRect(0, 210, 10, 100)
 
-  // draws the ball
-  canvasContext.fillStyle = 'white'
+  drawCircle('white', 50, 100, 10)
+}
+
+function drawCircle(color, circleX, circleY, radius) {
+  canvasContext.fillStyle = color
   canvasContext.beginPath()
-  canvasContext.arc(50, 100, 10, 0, Math.PI*2, true)
+  canvasContext.arc(circleX, circleY, radius, 0, Math.PI*2, true)
   canvasContext.fill()
 }
