@@ -10,4 +10,7 @@ window.onload = function() {
 function canvasDrawings() {
   canvasContext.fillStyle = 'black'
   canvasContext.fillRect(0, 0, canvas.width, canvas.height)
+
+  canvasContext.fillStyle = 'white'
+  canvasContext.fillRect(0, 210, 10, 100)
 }
