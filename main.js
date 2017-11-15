@@ -25,13 +25,20 @@ function moveBall() {
 }
 
 function canvasDrawings() {
-  canvasContext.fillStyle = 'black'
-  canvasContext.fillRect(0, 0, canvas.width, canvas.height)
 
-  canvasContext.fillStyle = 'white'
-  canvasContext.fillRect(0, 210, 10, 100)
+  // black background
+  drawRect('black', 0, 0, canvas.width, canvas.height)
 
+  // left paddle
+  drawRect('white', 0, 210, 10, 100)
+
+  // pong ball
   drawCircle('white', ballX, 100, 10)
+}
+
+function drawRect(color, xCoordinate, yCoordinate, width, height) {
+  canvasContext.fillStyle = color
+  canvasContext.fillRect(xCoordinate, yCoordinate, width, height)
 }
 
 function drawCircle(color, circleX, circleY, radius) {
