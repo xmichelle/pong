@@ -30,6 +30,7 @@ function mousePosition(evt) {
 
   return { x: mouseX, y: mouseY }
 }
+//
 
 function moveBall() {
   ballX += ballSpeedX
