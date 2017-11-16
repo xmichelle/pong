@@ -19,9 +19,8 @@ window.onload = function() {
     moveBall()
     canvasDrawings()
   }, 1000/framesPerSecond)
-}
 
-function mousePosition(evt) {
+function calculateMousePosition(evt) {
   const rect = canvas.getBoundingClientRect()
   const root = document.documentElement
 
@@ -30,7 +29,12 @@ function mousePosition(evt) {
 
   return { x: mouseX, y: mouseY }
 }
-//
+
+canvas.addEventListener('mousemove', event => {
+  const mousePosition = calculateMousePosition(event)
+  leftPaddleY = mousePosition.y
+})
+}
 
 function moveBall() {
   ballX += ballSpeedX
@@ -56,7 +60,7 @@ function canvasDrawings() {
   drawRect('black', 0, 0, canvas.width, canvas.height)
 
   // left paddle
-  drawRect('white', 0, 210, 10, paddleHeight)
+  drawRect('white', 0, leftPaddleY, 10, paddleHeight)
 
   // pong ball
   drawCircle('white', ballX, ballY, 10)
