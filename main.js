@@ -8,6 +8,7 @@ let ballY = 50
 let ballSpeedY = 4
 
 let leftPaddleY = 250
+let rightPaddleY = 250
 const paddleHeight = 100
 
 window.onload = function() {
@@ -36,15 +37,22 @@ canvas.addEventListener('mousemove', event => {
 })
 }
 
+function resetBall() {
+  ballSpeedX = -ballSpeedX
+  ballX = canvas.width/2
+  ballY = canvas.height/2
+}
+
 function moveBall() {
   ballX += ballSpeedX
   ballY += ballSpeedY
 
   if (ballX <= 0) {
-    ballSpeedX = -ballSpeedX
+    resetBall()
   }
   else if (ballX >= canvas.width) {
-    ballSpeedX = -ballSpeedX
+    // ballSpeedX = -ballSpeedX
+    resetBall()
   }
   else if (ballY <= 0) {
     ballSpeedY = -ballSpeedY
