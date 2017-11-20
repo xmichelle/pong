@@ -36,12 +36,18 @@ canvas.addEventListener('mousemove', event => {
 })
 }
 
+function resetBall() {
+  ballX = canvas.width/2
+  ballY = canvas.height/2
+}
+
 function moveBall() {
   ballX += ballSpeedX
   ballY += ballSpeedY
 
   if (ballX <= 0) {
-    ballSpeedX = -ballSpeedX
+    // ballSpeedX = -ballSpeedX
+    resetBall()
   }
   else if (ballX >= canvas.width) {
     ballSpeedX = -ballSpeedX
