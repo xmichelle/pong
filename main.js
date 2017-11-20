@@ -58,8 +58,12 @@ function moveBall() {
     }
   }
   else if (ballX >= canvas.width) {
-    // ballSpeedX = -ballSpeedX
-    resetBall()
+    if (ballY > rightPaddleY && ballY < (rightPaddleY + paddleHeight)) {
+      ballSpeedX = -ballSpeedX
+    }
+    else {
+      resetBall()
+    }
   }
   else if (ballY <= 0) {
     ballSpeedY = -ballSpeedY
