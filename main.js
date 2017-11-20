@@ -35,7 +35,7 @@ function calculateMousePosition(evt) {
 
 canvas.addEventListener('mousemove', event => {
   const mousePosition = calculateMousePosition(event)
-  leftPaddleY = mousePosition.y - (paddleHeight/2)
+  rightPaddleY = mousePosition.y - (paddleHeight/2)
 })
 }
 
