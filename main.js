@@ -9,6 +9,7 @@ let ballSpeedY = 4
 
 let leftPaddleY = 250
 let rightPaddleY = 250
+
 const paddleHeight = 100
 
 window.onload = function() {
@@ -52,7 +53,7 @@ function moveBall() {
       ballSpeedX = -ballSpeedX
     }
     else {
-      resetBall()  
+      resetBall()
     }
   }
   else if (ballX >= canvas.width) {
@@ -74,6 +75,9 @@ function canvasDrawings() {
 
   // left paddle
   drawRect('white', 0, leftPaddleY, 10, paddleHeight)
+
+  // right paddle
+  drawRect('white', canvas.width - 10, rightPaddleY, 10, paddleHeight)
 
   // pong ball
   drawCircle('white', ballX, ballY, 10)
