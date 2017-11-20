@@ -11,6 +11,7 @@ let leftPaddleY = 250
 let rightPaddleY = 250
 
 const paddleHeight = 100
+const paddleWidth = 10
 
 window.onload = function() {
   canvas = document.querySelector('#gameCanvas')
@@ -74,10 +75,10 @@ function canvasDrawings() {
   drawRect('black', 0, 0, canvas.width, canvas.height)
 
   // left paddle
-  drawRect('white', 0, leftPaddleY, 10, paddleHeight)
+  drawRect('white', 0, leftPaddleY, paddleWidth, paddleHeight)
 
   // right paddle
-  drawRect('white', canvas.width - 10, rightPaddleY, 10, paddleHeight)
+  drawRect('white', canvas.width - paddleWidth, rightPaddleY, paddleWidth, paddleHeight)
 
   // pong ball
   drawCircle('white', ballX, ballY, 10)
