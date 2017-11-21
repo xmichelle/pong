@@ -41,7 +41,8 @@ canvas.addEventListener('mousemove', event => {
 }
 
 function aiMovement() {
-  if (rightPaddleY < ballY) {
+  let rightPaddleYCenter = rightPaddleY + (paddleHeight/2)
+  if (rightPaddleYCenter < ballY) {
     rightPaddleY += 7
   }
   else {
