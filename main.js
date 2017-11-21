@@ -20,6 +20,7 @@ window.onload = function() {
   const framesPerSecond = 30
   setInterval(() => {
     moveBall()
+    aiMovement()
     canvasDrawings()
   }, 1000/framesPerSecond)
 
@@ -37,6 +38,15 @@ canvas.addEventListener('mousemove', event => {
   const mousePosition = calculateMousePosition(event)
   leftPaddleY = mousePosition.y - (paddleHeight/2)
 })
+}
+
+function aiMovement() {
+  if (rightPaddleY < ballY) {
+    rightPaddleY += 7
+  }
+  else {
+    rightPaddleY -= 7
+  }
 }
 
 function resetBall() {
