@@ -13,6 +13,9 @@ let rightPaddleY = 250
 const paddleHeight = 100
 const paddleWidth = 10
 
+let leftScore = 0
+let rightScore = 0
+
 window.onload = function() {
   canvas = document.querySelector('#gameCanvas')
   ctx = canvas.getContext('2d')
@@ -66,6 +69,7 @@ function moveBall() {
     }
     else {
       resetBall()
+      rightScore++
     }
   }
   else if (ballX >= canvas.width) {
@@ -74,6 +78,7 @@ function moveBall() {
     }
     else {
       resetBall()
+      leftScore++
     }
   }
   else if (ballY <= 0) {
@@ -99,8 +104,8 @@ function canvasDrawings() {
   drawCircle('white', ballX, ballY, 10)
 
   // score text
-  ctx.fillText('Left Score', 100, 100)
-  ctx.fillText('Right Score', canvas.width - 100, 100)
+  ctx.fillText(leftScore, 100, 100)
+  ctx.fillText(rightScore, canvas.width - 100, 100)
 }
 
 function drawRect(color, xCoordinate, yCoordinate, width, height) {
