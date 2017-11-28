@@ -99,7 +99,8 @@ function canvasDrawings() {
   drawCircle('white', ballX, ballY, 10)
 
   // score text
-  ctx.fillText('Score', 100, 100)
+  ctx.fillText('Left Score', 100, 100)
+  ctx.fillText('Right Score', canvas.width - 100, 100)
 }
 
 function drawRect(color, xCoordinate, yCoordinate, width, height) {
