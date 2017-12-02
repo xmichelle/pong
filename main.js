@@ -49,10 +49,10 @@ canvas.addEventListener('mousemove', event => {
 function aiMovement() {
   let rightPaddleYCenter = rightPaddleY + (paddleHeight/2)
   if (rightPaddleYCenter < (ballY - 30)) {
-    rightPaddleY += 6
+    rightPaddleY += 8
   }
-  else if (rightPaddleY > (ballY + 30)) {
-    rightPaddleY -= 6
+  else if (rightPaddleYCenter > (ballY + 30)) {
+    rightPaddleY -= 8
   }
 }
 
@@ -74,15 +74,19 @@ function moveBall() {
   if (ballX <= 0) {
     if (ballY > leftPaddleY && ballY < (leftPaddleY + paddleHeight)) {
       ballSpeedX = -ballSpeedX
+      let deltaY = ballY - (leftPaddleY + (paddleHeight/2))
+      ballSpeedY = deltaY * 0.35
     }
     else {
-      rightScore++
+      rightScore++ // score needs to be before ball reset
       resetBall()
     }
   }
   else if (ballX >= canvas.width) {
     if (ballY > rightPaddleY && ballY < (rightPaddleY + paddleHeight)) {
       ballSpeedX = -ballSpeedX
+      let deltaY = ballY - (rightPaddleY + (paddleHeight/2))
+      ballSpeedY = deltaY * 0.35
     }
     else {
       leftScore++
@@ -113,6 +117,8 @@ function canvasDrawings() {
     return
   }
 
+  drawNet()
+
   // left paddle
   drawRect('white', 0, leftPaddleY, paddleWidth, paddleHeight)
 
@@ -137,4 +143,10 @@ function drawCircle(color, circleX, circleY, radius) {
   ctx.beginPath()
   ctx.arc(circleX, circleY, radius, 0, Math.PI*2, true)
   ctx.fill()
+}
+
+function drawNet() {
+  for (let i = 0; i < canvas.height; i += 40) {
+    drawRect('white',canvas.width/2, i, 2, 20)
+  }
 }
