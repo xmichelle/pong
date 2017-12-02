@@ -13,6 +13,12 @@ let rightPaddleY = 250
 const paddleHeight = 100
 const paddleWidth = 10
 
+let leftScore = 0
+let rightScore = 0
+const winningScore = 3
+
+let showWinScreen = false
+
 window.onload = function() {
   canvas = document.querySelector('#gameCanvas')
   ctx = canvas.getContext('2d')
@@ -51,6 +57,11 @@ function aiMovement() {
 }
 
 function resetBall() {
+  if (leftScore >= winningScore || rightScore >= winningScore) {
+    // leftScore = 0
+    // rightScore = 0
+    showWinScreen = true
+  }
   ballSpeedX = -ballSpeedX
   ballX = canvas.width/2
   ballY = canvas.height/2
@@ -65,6 +76,7 @@ function moveBall() {
       ballSpeedX = -ballSpeedX
     }
     else {
+      rightScore++
       resetBall()
     }
   }
@@ -73,6 +85,7 @@ function moveBall() {
       ballSpeedX = -ballSpeedX
     }
     else {
+      leftScore++
       resetBall()
     }
   }
@@ -89,6 +102,17 @@ function canvasDrawings() {
   // black background
   drawRect('black', 0, 0, canvas.width, canvas.height)
 
+  if (showWinScreen) {
+    ctx.fillStyle = 'white'
+    if (leftScore >= winningScore) {
+      ctx.fillText('Left Player Won!', 350, 200)
+    }
+    else if (rightScore >= winningScore) {
+      ctx.fillText('Right Player Won!', 350, 200)
+    }
+    return
+  }
+
   // left paddle
   drawRect('white', 0, leftPaddleY, paddleWidth, paddleHeight)
 
@@ -97,6 +121,10 @@ function canvasDrawings() {
 
   // pong ball
   drawCircle('white', ballX, ballY, 10)
+
+  // score text
+  ctx.fillText(leftScore, 100, 100)
+  ctx.fillText(rightScore, canvas.width - 100, 100)
 }
 
 function drawRect(color, xCoordinate, yCoordinate, width, height) {
