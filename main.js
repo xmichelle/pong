@@ -74,6 +74,8 @@ function moveBall() {
   if (ballX <= 0) {
     if (ballY > leftPaddleY && ballY < (leftPaddleY + paddleHeight)) {
       ballSpeedX = -ballSpeedX
+      let deltaY = ballY - (leftPaddleY + (paddleHeight/2))
+      ballSpeedY = deltaY * 0.35
     }
     else {
       rightScore++
@@ -83,6 +85,8 @@ function moveBall() {
   else if (ballX >= canvas.width) {
     if (ballY > rightPaddleY && ballY < (rightPaddleY + paddleHeight)) {
       ballSpeedX = -ballSpeedX
+      let deltaY = ballY - (rightPaddleY + (paddleHeight/2))
+      ballSpeedY = deltaY * 0.35
     }
     else {
       leftScore++
