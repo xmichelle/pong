@@ -68,10 +68,10 @@ window.onload = function() {
 
 function aiMovement() {
   let rightPaddleYCenter = rightPaddleY + (paddleHeight/2)
-  if (rightPaddleYCenter < (ballY - 30)) {
+  if (rightPaddleYCenter < (ballY - 20)) {
     rightPaddleY += 8
   }
-  else if (rightPaddleYCenter > (ballY + 30)) {
+  else if (rightPaddleYCenter > (ballY + 20)) {
     rightPaddleY -= 8
   }
 }
