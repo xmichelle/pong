@@ -18,49 +18,68 @@ let rightScore = 0
 const winningScore = 3
 
 let showWinScreen = false
+let playGame = true
+
+const framesPerSecond = 30
+
+function movementInterval() {
+    setInterval(() => {
+      if (playGame) {
+        moveBall()
+        aiMovement()
+      }
+    }, 1000/framesPerSecond)
+}
 
 window.onload = function() {
   canvas = document.querySelector('#gameCanvas')
   ctx = canvas.getContext('2d')
 
-  const framesPerSecond = 30
   setInterval(() => {
-    moveBall()
-    aiMovement()
     canvasDrawings()
   }, 1000/framesPerSecond)
 
-function calculateMousePosition(evt) {
-  const rect = canvas.getBoundingClientRect()
-  const root = document.documentElement
+  movementInterval()
 
-  let mouseX = evt.clientX - rect.left - root.scrollLeft
-  let mouseY = evt.clientY - rect.top - root.scrollTop
+  function calculateMousePosition(evt) {
+    const rect = canvas.getBoundingClientRect()
+    const root = document.documentElement
 
-  return { x: mouseX, y: mouseY }
-}
+    let mouseX = evt.clientX - rect.left - root.scrollLeft
+    let mouseY = evt.clientY - rect.top - root.scrollTop
 
-canvas.addEventListener('mousemove', event => {
-  const mousePosition = calculateMousePosition(event)
-  leftPaddleY = mousePosition.y - (paddleHeight/2)
-})
+    return { x: mouseX, y: mouseY }
+  }
+
+  canvas.addEventListener('click', event => {
+    if (showWinScreen) {
+      leftScore = 0
+      rightScore = 0
+      showWinScreen = false
+      playGame = true
+    }
+  })
+
+  canvas.addEventListener('mousemove', event => {
+    const mousePosition = calculateMousePosition(event)
+    leftPaddleY = mousePosition.y - (paddleHeight/2)
+  })
 }
 
 function aiMovement() {
   let rightPaddleYCenter = rightPaddleY + (paddleHeight/2)
-  if (rightPaddleYCenter < (ballY - 30)) {
+  if (rightPaddleYCenter < (ballY - 20)) {
     rightPaddleY += 8
   }
-  else if (rightPaddleYCenter > (ballY + 30)) {
+  else if (rightPaddleYCenter > (ballY + 20)) {
     rightPaddleY -= 8
   }
 }
 
 function resetBall() {
   if (leftScore >= winningScore || rightScore >= winningScore) {
-    // leftScore = 0
-    // rightScore = 0
     showWinScreen = true
+    playGame = false
   }
   ballSpeedX = -ballSpeedX
   ballX = canvas.width/2
@@ -109,11 +128,12 @@ function canvasDrawings() {
   if (showWinScreen) {
     ctx.fillStyle = 'white'
     if (leftScore >= winningScore) {
-      ctx.fillText('Left Player Won!', 350, 200)
+      ctx.fillText('CONGRATS! YOU WON!', 345, 300)
     }
     else if (rightScore >= winningScore) {
-      ctx.fillText('Right Player Won!', 350, 200)
+      ctx.fillText('YOU LOST... BETTER LUCK NEXT TIME!', 300, 200)
     }
+    ctx.fillText('Click To Play Again', 350, 500)
     return
   }
 
