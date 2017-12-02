@@ -17,6 +17,8 @@ let leftScore = 0
 let rightScore = 0
 const winningScore = 3
 
+let showWinScreen = false
+
 window.onload = function() {
   canvas = document.querySelector('#gameCanvas')
   ctx = canvas.getContext('2d')
@@ -24,7 +26,7 @@ window.onload = function() {
   const framesPerSecond = 30
   setInterval(() => {
     moveBall()
-    // aiMovement()
+    aiMovement()
     canvasDrawings()
   }, 1000/framesPerSecond)
 
@@ -58,6 +60,7 @@ function resetBall() {
   if (leftScore >= winningScore || rightScore >= winningScore) {
     leftScore = 0
     rightScore = 0
+    showWinScreen = true
   }
   ballSpeedX = -ballSpeedX
   ballX = canvas.width/2
@@ -98,6 +101,12 @@ function canvasDrawings() {
 
   // black background
   drawRect('black', 0, 0, canvas.width, canvas.height)
+
+  if (showWinScreen) {
+    ctx.fillStyle = 'white'
+    ctx.fillText('Game Over', 100, 100)
+    return
+  }
 
   // left paddle
   drawRect('white', 0, leftPaddleY, paddleWidth, paddleHeight)
