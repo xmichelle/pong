@@ -78,7 +78,7 @@ function moveBall() {
       ballSpeedY = deltaY * 0.35
     }
     else {
-      rightScore++
+      rightScore++ // score needs to be before ball reset
       resetBall()
     }
   }
