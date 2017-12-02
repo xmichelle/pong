@@ -128,10 +128,10 @@ function canvasDrawings() {
   if (showWinScreen) {
     ctx.fillStyle = 'white'
     if (leftScore >= winningScore) {
-      ctx.fillText('Left Player Won!', 350, 200)
+      ctx.fillText('CONGRATS! YOU WON!', 345, 300)
     }
     else if (rightScore >= winningScore) {
-      ctx.fillText('Right Player Won!', 350, 200)
+      ctx.fillText('YOU LOST... BETTER LUCK NEXT TIME!', 300, 200)
     }
     ctx.fillText('Click To Play Again', 350, 500)
     return
