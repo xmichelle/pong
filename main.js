@@ -117,6 +117,8 @@ function canvasDrawings() {
     return
   }
 
+  drawNet()
+
   // left paddle
   drawRect('white', 0, leftPaddleY, paddleWidth, paddleHeight)
 
@@ -141,4 +143,10 @@ function drawCircle(color, circleX, circleY, radius) {
   ctx.beginPath()
   ctx.arc(circleX, circleY, radius, 0, Math.PI*2, true)
   ctx.fill()
+}
+
+function drawNet() {
+  for (let i = 0; i < canvas.height; i += 40) {
+    drawRect('white',canvas.width/2, i, 2, 20)
+  }
 }
