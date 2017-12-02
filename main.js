@@ -58,8 +58,8 @@ function aiMovement() {
 
 function resetBall() {
   if (leftScore >= winningScore || rightScore >= winningScore) {
-    // leftScore = 0
-    // rightScore = 0
+    leftScore = 0
+    rightScore = 0
     showWinScreen = true
   }
   ballSpeedX = -ballSpeedX
@@ -114,6 +114,7 @@ function canvasDrawings() {
     else if (rightScore >= winningScore) {
       ctx.fillText('Right Player Won!', 350, 200)
     }
+    ctx.fillText('Click To Play Again', 350, 500)
     return
   }
 
