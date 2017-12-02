@@ -15,6 +15,7 @@ const paddleWidth = 10
 
 let leftScore = 0
 let rightScore = 0
+const winningScore = 3
 
 window.onload = function() {
   canvas = document.querySelector('#gameCanvas')
@@ -54,6 +55,10 @@ function aiMovement() {
 }
 
 function resetBall() {
+  if (leftScore >= winningScore || rightScore >= winningScore) {
+    leftScore = 0
+    rightScore = 0
+  }
   ballSpeedX = -ballSpeedX
   ballX = canvas.width/2
   ballY = canvas.height/2
@@ -68,8 +73,8 @@ function moveBall() {
       ballSpeedX = -ballSpeedX
     }
     else {
-      resetBall()
       rightScore++
+      resetBall()
     }
   }
   else if (ballX >= canvas.width) {
@@ -77,8 +82,8 @@ function moveBall() {
       ballSpeedX = -ballSpeedX
     }
     else {
-      resetBall()
       leftScore++
+      resetBall()
     }
   }
   else if (ballY <= 0) {
