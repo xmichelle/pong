@@ -40,6 +40,14 @@ function calculateMousePosition(evt) {
   return { x: mouseX, y: mouseY }
 }
 
+canvas.addEventListener('click', event => {
+  if (showWinScreen) {
+    leftScore = 0
+    rightScore = 0
+    showWinScreen = false
+  }
+})
+
 canvas.addEventListener('mousemove', event => {
   const mousePosition = calculateMousePosition(event)
   leftPaddleY = mousePosition.y - (paddleHeight/2)
@@ -58,8 +66,8 @@ function aiMovement() {
 
 function resetBall() {
   if (leftScore >= winningScore || rightScore >= winningScore) {
-    leftScore = 0
-    rightScore = 0
+    // leftScore = 0
+    // rightScore = 0
     showWinScreen = true
   }
   ballSpeedX = -ballSpeedX
