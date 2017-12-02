@@ -24,7 +24,7 @@ window.onload = function() {
   const framesPerSecond = 30
   setInterval(() => {
     moveBall()
-    aiMovement()
+    // aiMovement()
     canvasDrawings()
   }, 1000/framesPerSecond)
 
