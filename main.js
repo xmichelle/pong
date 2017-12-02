@@ -49,10 +49,10 @@ canvas.addEventListener('mousemove', event => {
 function aiMovement() {
   let rightPaddleYCenter = rightPaddleY + (paddleHeight/2)
   if (rightPaddleYCenter < (ballY - 30)) {
-    rightPaddleY += 6
+    rightPaddleY += 8
   }
-  else if (rightPaddleY > (ballY + 30)) {
-    rightPaddleY -= 6
+  else if (rightPaddleYCenter > (ballY + 30)) {
+    rightPaddleY -= 8
   }
 }
 
